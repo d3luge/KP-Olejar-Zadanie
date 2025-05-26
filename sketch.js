@@ -27,7 +27,8 @@ function setup() {
     { label: 'Add Glider', callback: addGliderPattern },
     { label: 'Add Fish', callback: addFishPattern },
     { label: 'Add Flower', callback: addFlowerPattern },
-    { label: 'Add Goblin', callback: generateGoblin }
+    { label: 'Add Goblin', callback: generateGoblin },
+    { label: 'Add Spoon', callback: generateSpoon }
   ];
 
   // Remove any previously created buttons (for hot reloads)
@@ -391,5 +392,21 @@ function generateSavedPattern() {
     console.log('Saved pattern generated!');
   } else {
     console.log('No pattern saved yet.');
+  }
+}
+
+function generateSpoon() {
+  let x = floor(cols / 2) - 1;
+  let y = floor(rows / 2) - 1;
+  if (x + 2 < cols && y + 2 < rows && x >= 0 && y >= 0) {
+    grid[x][y] = 1;
+    grid[x+1][y+1] = 1;
+    grid[x-1][y] = 1;
+    grid[x-2][y+1] = 1;
+    grid[x-2][y] = 1;
+    grid[x-3][y+2] = 1;
+    grid[x-3][y+3] = 1;
+    grid[x+2][y+2] = 1;
+    grid[x+2][y+3] = 1;
   }
 }
